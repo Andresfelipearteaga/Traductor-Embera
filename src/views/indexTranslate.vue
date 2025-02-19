@@ -29,7 +29,7 @@
             <v-row>
           <v-col cols="12" md="6">
             <v-row>
-              <v-col cols="12" md="3" class="text-center">
+              <v-col cols="12" md="5" class="text-center">
                 <v-select
                 bg-color="amber-lighten-4"
                 color="orange orange-darken-4"
@@ -46,7 +46,6 @@
                   v-model="texto"
                   placeholder="Traduce aqui"
                   auto-grow
-                  @input="reiniciarTemporizador"
                   class="textarea"
                   ></v-textarea>
               </v-col>
@@ -56,7 +55,7 @@
           
           <v-col cols="12" md="6">
             <v-row>
-              <v-col cols="19" md="3" class="text-center">
+              <v-col cols="19" md="5" class="text-center">
                 <v-select
                 bg-color="amber-lighten-4"
                 color="orange orange-darken-4"
@@ -86,6 +85,15 @@
 
       
           </div>
+          <br>
+          <v-row>
+          <v-col>
+            <center>
+              <button @click="traducir" class="btn-translate">Traducir</button>
+
+            </center>
+          </v-col>
+        </v-row>
           <v-row>
         <v-col>
           <!-- Espacios para Logos -->
@@ -119,10 +127,9 @@ export default {
         drawer: false,
         selectedLanguage1: "Español",
         selectedLanguage2: "Embera",
-        languages: ["Español", "Embera"], 
+        languages: ["Español", "Embera", "Criollo San Andrés", "Criollo Palenquero" ], 
         texto: "",
         translate: "",
-        temporizador: null
       };
     },
     computed: {
@@ -153,12 +160,12 @@ export default {
 
 
 
-      reiniciarTemporizador() {
-        clearTimeout(this.temporizador);
-        this.temporizador = setTimeout(() => {
-          this.traducir();
-        }, 1000)  
-      },
+      // reiniciarTemporizador() {
+      //   clearTimeout(this.temporizador);
+      //   this.temporizador = setTimeout(() => {
+      //     this.traducir();
+      //   }, 1000)  
+      // },
 
       traducir() {
         const paquete = 
@@ -216,6 +223,21 @@ export default {
 
 .textarea .v-input__control input:disabled {
   color: black; /* Color del texto cuando está deshabilitado */
+}
+
+.btn-translate {
+  background-color: #FF6300;
+  padding: 10px;
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.btn-translate:hover {
+  background-color: #ff8234;
+  color: rgb(255, 255, 255);
+  border: white 1px solid;
+  transform: scale  (1.1);
+  transition: all 0.2s ease;
 }
 
 @media (min-width: 951px) {
